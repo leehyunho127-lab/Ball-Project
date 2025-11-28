@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    AudioSource myAudio;
     public Vector3 inputVec; //입력방향
     public float movePower; //이동속도
     public float jumpPower; //점프힘
@@ -14,6 +15,7 @@ public class Player : MonoBehaviour
     void Awake()
     {
         rigid = GetComponent<Rigidbody>(); //초기화
+        myAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -25,7 +27,7 @@ public class Player : MonoBehaviour
 
         if (isGround && isJump) {
             rigid.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
-
+            myAudio.Play();
         }
     }
 
